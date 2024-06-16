@@ -1,0 +1,114 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use "sass:map";
+@use "@angular/material" as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+$primary-blue: (
+  (
+    50: #eceff1,
+    100: #cfd8dc,
+    200: #b0bec5,
+    300: #90a4ae,
+    400: #78909c,
+    500: #607d8b,
+    600: #546e7a,
+    700: #455a64,
+    800: #37474f,
+    900: #263238,
+    A100: #cfd8dc,
+    A200: #b0bec5,
+    A400: #78909c,
+    A700: #455a64,
+    contrast: (
+      50: #000000,
+      100: #000000,
+      200: #000000,
+      300: #ffffff,
+      400: #ffffff,
+      500: #ffffff,
+      600: #ffffff,
+      700: #ffffff,
+      800: #ffffff,
+      900: #ffffff,
+      A100: #000000,
+      A200: #000000,
+      A400: #ffffff,
+      A700: #ffffff,
+    ),
+  )
+);
+
+// Amber accent palette
+$accent-amber: (
+  (
+    50: #fbe9e7,
+    100: #ffccbc,
+    200: #ffab91,
+    300: #ff8a65,
+    400: #ff7043,
+    500: #ff5722,
+    600: #f4511e,
+    700: #e64a19,
+    800: #d84315,
+    900: #bf360c,
+    A100: #ff9e80,
+    A200: #ff6e40,
+    A400: #ff3d00,
+    A700: #dd2c00,
+    contrast: (
+      50: #000000,
+      100: #000000,
+      200: #000000,
+      300: #000000,
+      400: #000000,
+      500: #ffffff,
+      600: #ffffff,
+      700: #ffffff,
+      800: #ffffff,
+      900: #ffffff,
+      A100: #000000,
+      A200: #000000,
+      A400: #ffffff,
+      A700: #ffffff,
+    ),
+  )
+);
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$doc-components-editor-primary: mat.define-palette($primary-blue);
+$doc-components-editor-accent: mat.define-palette(
+  $accent-amber,
+  A200,
+  A100,
+  A400
+);
+
+// The warn palette is optional (defaults to red).
+$doc-components-editor-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$doc-components-editor-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $doc-components-editor-primary,
+      accent: $doc-components-editor-accent,
+      warn: $doc-components-editor-warn,
+    ),
+  )
+);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($doc-components-editor-theme);
+
+/* You can add global styles to this file, and also import other style files */
