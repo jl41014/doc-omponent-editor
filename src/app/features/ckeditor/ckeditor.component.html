@@ -1,0 +1,19 @@
+<div>
+	<div class="main-container">
+		<div class="editor-container editor-container_classic-editor editor-container_include-style" #editorContainerElement>
+			<div class="editor-container__editor">
+				<div #editorElement>
+					<ckeditor [editor]="Editor" [config]="config" *ngIf="isLayoutReady" [(ngModel)]="data" />
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<H2> preview </H2>
+<div>{{data}}</div>
+<div [innerHTML]="data | safeHtml"></div>
+
+
+
